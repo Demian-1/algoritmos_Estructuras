@@ -1,0 +1,7 @@
+DATA TYPES BASICOS
+
+* Lista: Lista por indices y esas cosa
+* Stack: Es una pila LIFO, como apilar cosas, sacas primero lo de hasta arriba
+* Queue: Es una fila como de tortillas, el que sacas es el primero que se formó 
+* Linked list: Es como un array pero sin tamaño definido, cada elemento tiene referencia a sus adyacentes
+* Dictio/Map: datos con indices 
