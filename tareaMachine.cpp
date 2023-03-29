@@ -255,13 +255,14 @@ void cpyArr(int org[], int dest[], int n){
 
 #define N 400
 
-bool compArr(int arr1[], int arr2[], int n){
+float compArr(int arr1[], int arr2[], int n){
+    int coincidencias=n;
     for(int i=0; i<n; i++){
         if(arr1[i]!=arr2[i]){
-            return false;
+            coincidencias--;
         }
     }
-    return true;
+    return (float) coincidencias/n;
 }
 
 int main(){
@@ -269,34 +270,36 @@ int main(){
 
     cpyArr(d7, arr, N);
 
-    cout << "Arr: \n";
-    for(int i = 0; i<N; i++){
-        cout<<arr[i]<<" ";
-    }
+    //arr[300]=2;
 
     // busqueda
     cout << "\n";
-    if(compArr(arr, d0, N)){
-        cout << "Es un 0";
-    } else if(compArr(arr, d1, N)){
-        cout << "Es un 1";
-    } else if(compArr(arr, d2, N)){
-        cout << "Es un 2";
-    } else if(compArr(arr, d3, N)){
-        cout << "Es un 3";
-    } else if(compArr(arr, d4, N)){
-        cout << "Es un 4";
-    } else if(compArr(arr, d5, N)){
-        cout << "Es un 5";
-    } else if(compArr(arr, d6, N)){
-        cout << "Es un 6";
-    } else if(compArr(arr, d7, N)){
-        cout << "Es un 7";
-    } else if(compArr(arr, d8, N)){
-        cout << "Es un 8";
-    } else if(compArr(arr, d9, N)){
-        cout << "Es un 9";
+    float coincidenciaMax=0, coincidencias[10];
+
+    coincidencias[0] = compArr(arr, d0, N);
+    coincidencias[1] = compArr(arr, d1, N);
+    coincidencias[2] = compArr(arr, d2, N);
+    coincidencias[3] = compArr(arr, d3, N);
+    coincidencias[4] = compArr(arr, d4, N);
+    coincidencias[5] = compArr(arr, d5, N);
+    coincidencias[6] = compArr(arr, d6, N);
+    coincidencias[7] = compArr(arr, d7, N);
+    coincidencias[8] = compArr(arr, d8, N);
+    coincidencias[9] = compArr(arr, d9, N);
+    
+    int iCoincidenciaMax = 0;
+    for(int i = 0; i<10 ; i++){
+        if(coincidenciaMax<=coincidencias[i]){
+            coincidenciaMax = coincidencias[i];
+            iCoincidenciaMax = i;
+        }
     }
+
+    for(int i = 0; i < 10; i++){
+        cout << "\nLa coincidencia con d" << i << " es de " << coincidencias[i]*100.0 << "%";
+    }
+
+    cout << "\n La coincidencia Maxima es con el digito "<<iCoincidenciaMax<<", de "<<coincidenciaMax*100.0<<"%"<<endl;
 
     // for(int i = 0; i<400; i++){
     //     cin >> arr[i];
