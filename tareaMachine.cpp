@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <array> 
 
 using namespace std;
 
@@ -513,7 +514,7 @@ int d9[] = {
 
 int arr[] = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -521,7 +522,7 @@ int arr[] = {
 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
@@ -545,6 +546,23 @@ int w6[400] = {0};
 int w7[400] = {0};
 int w8[400] = {0};
 int w9[400] = {0};
+
+int sumatoriaPerceptron(int arrEnt[], int arrPesos[], int n){
+    int sum = 0;
+    for(int i = 0; i<n;i++){
+        sum += arrEnt[i]*arrPesos[i];
+    }
+    return sum;
+}
+
+bool perceptron(int arrEnt[], int arrPesos[], int n, int h){
+    cout<<"Sumatoria del perceptron: "<<sumatoriaPerceptron(arrEnt,arrPesos, n)<<endl;
+    if(sumatoriaPerceptron(arrEnt,arrPesos, n)>h){
+        return true;
+    } else{
+        return false;
+    }
+}
 
 void calcularPesos(){
     for(int i = 0; i<400; i++){
@@ -675,11 +693,11 @@ int main(){
     //cpyArr(d7, arr, N);
 
     cout<<"DIGITO : : : \n";
-    imprimirDigito(w0);
+    imprimirDigito(arr);
     cout<<endl;
     calcularPesos();
-    cout<<"DIGITO : : : \n";
-    imprimirDigito(w0);
+    cout<<"\nPESOS : : : \n";
+    imprimirDigito(w6);
     cout<<endl;
 
     //arr[300]=2;
@@ -716,6 +734,14 @@ int main(){
     // for(int i = 0; i<400; i++){
     //     cin >> arr[i];
     // }
+
+    cout<<"PERCEPTRON :::::"<<endl;
+
+    if(perceptron(arr, w6, 400, 0)){
+        cout<<"Es 6"<<endl;
+    }else{
+        cout<<"no es 6"<<endl;
+    }
 
 
 
