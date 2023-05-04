@@ -1,8 +1,18 @@
-#include <bits/stdc++.h> //incluye listas colas todo 
-// si solo quieres una estructura #include <queue>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-void main(){
-    
+int main(){
+    int n;
+    cin>>n;
+
+    map<int,int> bucket;
+    int currentNumber;
+    for(int i=0;i<n;i++){
+        cin>>currentNumber;
+        bucket[currentNumber]++;
+    }
+
+    for(auto it = bucket.begin(); it!=bucket.end();it++){
+        cout<<it -> first << " - " << it -> second << endl;
+    }
 }
